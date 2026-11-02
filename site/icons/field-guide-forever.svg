@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <title>Field Guide Forever</title>
+  <defs>
+    <!-- Family palette: keep these four gradients unchanged in every addon. -->
+    <radialGradient id="bg" cx="50%" cy="38%" r="75%">
+      <stop offset="0" stop-color="#3a2a1c"/>
+      <stop offset="1" stop-color="#120c08"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbe7a1"/>
+      <stop offset="0.45" stop-color="#d9a441"/>
+      <stop offset="1" stop-color="#7a4f14"/>
+    </linearGradient>
+    <linearGradient id="emblem" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff4c2"/>
+      <stop offset="0.5" stop-color="#f2c14e"/>
+      <stop offset="1" stop-color="#b3741c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Frame and background: identical in every addon. -->
+  <rect x="6" y="6" width="244" height="244" rx="28" fill="url(#gold)"/>
+  <rect x="16" y="16" width="224" height="224" rx="20" fill="url(#bg)"/>
+
+  <!-- Emblem: an open field journal and a small star. -->
+  <path d="M36 86 C64 70 100 72 122 88 L122 196 C100 182 66 182 42 196 Z M134 88 C156 72 192 70 220 86 L214 196 C190 182 156 182 134 196 Z M122 88 H134 V196 H122 Z" fill="#000" opacity="0.45" transform="translate(4 5)"/>
+  <path d="M36 86 C64 70 100 72 122 88 L122 196 C100 182 66 182 42 196 Z" fill="url(#emblem)" stroke="#5a360c" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M134 88 C156 72 192 70 220 86 L214 196 C190 182 156 182 134 196 Z" fill="url(#emblem)" stroke="#5a360c" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M122 88 H134 V196 H122 Z" fill="url(#emblem)" stroke="#5a360c" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M58 112 C78 104 98 106 110 112 M58 138 C78 130 98 132 110 138 M58 164 C78 156 98 158 110 164" fill="none" stroke="#5a360c" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+  <path d="M146 112 C158 106 178 104 198 112 M146 138 C158 132 178 130 198 138 M146 164 C158 158 178 156 198 164" fill="none" stroke="#5a360c" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+  <path d="M128 32 L133.5 50.5 L152 56 L133.5 61.5 L128 80 L122.5 61.5 L104 56 L122.5 50.5 Z" fill="url(#emblem)" stroke="#5a360c" stroke-width="4" stroke-linejoin="round"/>
+</svg>

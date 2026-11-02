@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WoW: Forever addons by Cillian Berragan</title>
+<meta name="description" content="Eight free, open-source addons for World of Warcraft: Forever: quests and travel, professions, quality-of-life tweaks, Legacy challenges, commissions, a creature field guide and inventory search.">
+<link rel="canonical" href="https://wow.cjber.dev/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#14100b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6efe2" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WoW: Forever addons by Cillian Berragan">
+<meta property="og:description" content="Eight free, open-source addons for World of Warcraft: Forever: quests and travel, professions, quality-of-life tweaks, Legacy challenges, commissions, a creature field guide and inventory search.">
+<meta property="og:url" content="https://wow.cjber.dev/">
+<meta property="og:image" content="https://wow.cjber.dev/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The eight addon icons on a dark warm background, under the title Addons by Cillian Berragan">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #14100b;
+    --bg-top: #241a12;
+    --panel: #1d1610;
+    --panel-edge: rgba(217, 164, 65, 0.22);
+    --panel-edge-strong: rgba(217, 164, 65, 0.45);
+    --ink: #f3e9d7;
+    --muted: #bdab92;
+    --faint: #8f7d66;
+    --gold: #d9a441;
+    --gold-bright: #f2c14e;
+    --gold-deep: #7a4f14;
+    --focus: #fbe7a1;
+    --gold-wash: rgba(217, 164, 65, 0.12);
+    --icon-shadow: rgba(0, 0, 0, 0.35);
+    --shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      color-scheme: light;
+      --bg: #f6efe2;
+      --bg-top: #fff8ea;
+      --panel: #fffaf0;
+      --panel-edge: rgba(122, 79, 20, 0.18);
+      --panel-edge-strong: rgba(122, 79, 20, 0.4);
+      --ink: #241a11;
+      --muted: #6b5a45;
+      --faint: #7a684f;
+      --gold: #8a5a12;
+      --gold-bright: #7a4f14;
+      --gold-deep: #b3741c;
+      --focus: #7a4f14;
+      --gold-wash: rgba(122, 79, 20, 0.08);
+      --icon-shadow: rgba(74, 50, 20, 0.18);
+      --shadow: 0 18px 40px rgba(74, 50, 20, 0.12);
+    }
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    background-image: radial-gradient(120% 60% at 50% 0%, var(--bg-top), transparent 70%);
+    background-repeat: no-repeat;
+    color: var(--ink);
+    font-family: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: "Cinzel", Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: var(--gold-bright);
+    text-decoration-color: var(--panel-edge-strong);
+    text-underline-offset: 0.18em;
+  }
+
+  a:hover {
+    text-decoration-color: currentColor;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 16px;
+    top: -100px;
+    z-index: 10;
+    padding: 10px 16px;
+    background: var(--panel);
+    border: 1px solid var(--panel-edge-strong);
+    border-radius: 8px;
+    color: var(--ink);
+  }
+
+  .skip-link:focus {
+    top: 16px;
+  }
+
+  .wrap {
+    width: min(1120px, 100% - 32px);
+    margin-inline: auto;
+  }
+
+  /* Hero */
+  .hero {
+    padding: clamp(56px, 10vw, 104px) 0 clamp(32px, 6vw, 56px);
+    border-bottom: 1px solid var(--panel-edge);
+  }
+
+  .eyebrow {
+    margin: 0 0 14px;
+    color: var(--gold);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    max-width: 16ch;
+    font-size: clamp(2.1rem, 7vw, 4.25rem);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  .lede {
+    max-width: 62ch;
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: clamp(1.02rem, 2.2vw, 1.18rem);
+  }
+
+  .lede strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .lede + .lede {
+    margin-top: 12px;
+  }
+
+  /* Jump list */
+  .jump {
+    margin-top: 34px;
+  }
+
+  .jump h2 {
+    margin-bottom: 12px;
+    color: var(--faint);
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .jump ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .jump a {
+    display: inline-block;
+    padding: 7px 13px;
+    border: 1px solid var(--panel-edge);
+    border-radius: 999px;
+    background: var(--panel);
+    color: var(--ink);
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: border-color 120ms ease, color 120ms ease;
+  }
+
+  .jump a:hover,
+  .jump a:focus-visible {
+    border-color: var(--gold);
+    color: var(--gold-bright);
+  }
+
+  /* Addon entries */
+  .addons {
+    padding: clamp(16px, 4vw, 28px) 0 0;
+  }
+
+  .addon {
+    display: grid;
+    gap: 24px;
+    padding: clamp(36px, 6vw, 60px) 0;
+    border-bottom: 1px solid var(--panel-edge);
+    scroll-margin-top: 16px;
+  }
+
+  .addon:last-child {
+    border-bottom: 0;
+  }
+
+  .addon-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .icon {
+    flex: none;
+    width: 64px;
+    height: 64px;
+    filter: drop-shadow(0 6px 14px var(--icon-shadow));
+  }
+
+  .addon h2 {
+    font-size: clamp(1.5rem, 4.4vw, 2.1rem);
+  }
+
+  .tagline {
+    margin-top: 6px;
+    color: var(--gold-bright);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .body-copy {
+    margin-top: 16px;
+    max-width: 66ch;
+    color: var(--muted);
+  }
+
+  .install {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .install-label {
+    flex-basis: 100%;
+    color: var(--faint);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 9px 16px;
+    border: 1px solid var(--panel-edge-strong);
+    border-radius: 8px;
+    background: var(--panel);
+    color: var(--ink);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+  }
+
+  .btn:hover,
+  .btn:focus-visible {
+    border-color: var(--gold);
+    background: var(--gold-wash);
+    color: var(--gold-bright);
+  }
+
+  .shots {
+    display: grid;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .shots figure {
+    margin: 0;
+  }
+
+  .shots img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--panel-edge);
+    border-radius: 10px;
+    background: var(--panel);
+    box-shadow: var(--shadow);
+  }
+
+  .shots figcaption {
+    margin-top: 8px;
+    max-width: 62ch;
+    color: var(--faint);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 959px) {
+    .shots {
+      max-width: 680px;
+    }
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: clamp(32px, 6vw, 64px);
+    padding: 32px 0 48px;
+    border-top: 1px solid var(--panel-edge);
+    color: var(--faint);
+    font-size: 0.92rem;
+  }
+
+  .footer p + p {
+    margin-top: 8px;
+  }
+
+  .footer a {
+    color: var(--muted);
+  }
+
+  .footer a:hover {
+    color: var(--gold-bright);
+  }
+
+  @media (min-width: 960px) {
+    .addon {
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 48px;
+      align-items: start;
+    }
+
+    .addon-head {
+      gap: 20px;
+    }
+
+    .icon {
+      width: 76px;
+      height: 76px;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .shots {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .shots figure:only-child {
+      grid-column: span 2;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    * {
+      transition: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#addons">Skip to the addons</a>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">World of Warcraft: Forever</p>
+    <h1>Addons for WoW: Forever</h1>
+    <p class="lede">Eight addons that make questing, travel, professions, challenges and your bags easier to follow. Every one is <strong>free and open source</strong>.</p>
+    <p class="lede">Each works on its own, and they work together when you install more than one. Five are published addons, and three install from GitHub releases.</p>
+
+    <nav class="jump" aria-label="Jump to an addon">
+      <h2>Jump to</h2>
+      <ul>
+        <li><a href="#adventure-guide-forever">Adventure Guide Forever</a></li>
+        <li><a href="#shortest-path-forever">Shortest Path Forever</a></li>
+        <li><a href="#skillup-forever">SkillUp Forever</a></li>
+        <li><a href="#tweaks-forever">Tweaks Forever</a></li>
+        <li><a href="#legacy-forever">Legacy Forever</a></li>
+        <li><a href="#commissions-forever">Commissions Forever</a></li>
+        <li><a href="#field-guide-forever">Field Guide Forever</a></li>
+        <li><a href="#hoard-forever">Hoard Forever</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap addons" id="addons">
+
+  <article class="addon" id="adventure-guide-forever">
+    <div class="addon-copy">
+      <header class="addon-head">
+        <img class="icon" src="icons/adventure-guide-forever.svg" width="76" height="76" alt="">
+        <div>
+          <h2>Adventure Guide Forever</h2>
+          <p class="tagline">Picks quests for your level in WoW: Forever and, with Shortest Path Forever, walks you to each one.</p>
+        </div>
+      </header>
+      <p class="body-copy">Adventure Guide Forever suggests quests for your level and quest log, in a short route. Each number on the world map is a stop: a pickup, an objective or a hand-in. Shortest Path Forever walks you to each stop, or the game's own waypoint does without it, and the guide can follow RestedXP guides instead.</p>
+      <p class="install">
+        <span class="install-label">Install from</span>
+        <a class="btn" href="https://www.curseforge.com/wow/addons/adventure-guide-forever">CurseForge</a>
+        <a class="btn" href="https://addons.wago.io/addons/adventure-guide-forever">Wago Addons</a>
+      </p>
+    </div>
+    <div class="shots">
+      <figure>
+        <img src="img/adventure-guide-forever/map.webp" width="912" height="720" alt="A journey's quest stops numbered on The Barrens map, with a route to the first" loading="lazy">
+        <figcaption>Each number is a stop on the route: a pickup, an objective or a hand-in.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/adventure-guide-forever/tracker.webp" width="389" height="371" alt="The Adventure Guide tracker section" loading="lazy">
+        <figcaption>Your next stop sits beside your quests, with travel time when Shortest Path Forever has an estimate.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <article class="addon" id="shortest-path-forever">
+    <div class="addon-copy">
+      <header class="addon-head">
+        <img class="icon" src="icons/shortest-path-forever.svg" width="76" height="76" alt="">
+        <div>
+          <h2>Shortest Path Forever</h2>
+          <p class="tagline">Plan journeys in WoW: Forever, on foot, by air, by sea and through portals.</p>
+        </div>
+      </header>
+      <p class="body-copy">Shift-click the world map or minimap, or choose Plan journey on a quest, to plan a route that combines walking, flights, boats, zeppelins, lifts, the tram, portals and teleports. Directions follow in the objective tracker and on both maps, with live departure times for boats and flights. Routes replan as you move, and can follow RestedXP's current target.</p>
+      <p class="install">
+        <span class="install-label">Install from</span>
+        <a class="btn" href="https://www.curseforge.com/wow/addons/shortest-path-forever">CurseForge</a>
+        <a class="btn" href="https://addons.wago.io/addons/shortest-path-forever">Wago Addons</a>
+      </p>
+    </div>
+    <div class="shots">
+      <figure>
+        <img src="img/shortest-path-forever/tracker.webp" width="648" height="399" alt="Journey steps from Auberdine to Silithus" loading="lazy">
+        <figcaption>The tracker shows each step, with time and distance remaining.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/shortest-path-forever/minimap.webp" width="526" height="589" alt="A route and the game's waypoint on the minimap" loading="lazy">
+        <figcaption>Breadcrumbs show the walking route. The waypoint leads to the next step.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <article class="addon" id="skillup-forever">
+    <div class="addon-copy">
+      <header class="addon-head">
+        <img class="icon" src="icons/skillup-forever.svg" width="76" height="76" alt="">
+        <div>
+          <h2>SkillUp Forever</h2>
+          <p class="tagline">Classic profession-levelling numbers inside WoW: Forever's Professions window.</p>
+        </div>
+      </header>
+      <p class="body-copy">Each recipe row and tooltip shows its skill-up chance, cost and colour thresholds. The side panel adds levelling routes, shopping lists that count reagents against your bags and bank, and crafted gear for each slot. Prices come from vendors you visit and from Auctionator's recorded auctions.</p>
+      <p class="install">
+        <span class="install-label">Install from</span>
+        <a class="btn" href="https://www.curseforge.com/wow/addons/skillup-forever">CurseForge</a>
+        <a class="btn" href="https://addons.wago.io/addons/skillup-forever">Wago Addons</a>
+      </p>
+    </div>
+    <div class="shots">
+      <figure>
+        <img src="img/skillup-forever/window.webp" width="1200" height="718" alt="The Leatherworking window with skill-up chance and cost on each recipe row, and a tooltip showing reagent prices" loading="lazy">
+        <figcaption>Each row shows its chance and cost. The tooltip beside the window prices each reagent.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/skillup-forever/route.webp" width="1200" height="1010" alt="The SkillUp route tab with training and crafting steps and the reagents they need" loading="lazy">
+        <figcaption>The route tab lists training and crafting steps with their costs and the reagents they need.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <article class="addon" id="tweaks-forever">
+    <div class="addon-copy">
+      <header class="addon-head">
+        <img class="icon" src="icons/tweaks-forever.svg" width="76" height="76" alt="">
+        <div>
+          <h2>Tweaks Forever</h2>
+          <p class="tagline">Small quality-of-life tweaks for WoW: Forever that look like they came with the game.</p>
+        </div>
+      </header>
+      <p class="body-copy">Tweaks Forever can accept and turn in quests, name rares near you in chat, and repair and sell junk at merchants. Gear groups, painted dungeon maps, nameplates, tooltips and movable Blizzard windows sit beside them in the game's settings. Every feature has its own setting, and a feature steps aside when another addon already does that job.</p>
+      <p class="install">
+        <span class="install-label">Install from</span>
+        <a class="btn" href="https://www.curseforge.com/wow/addons/tweaks-forever">CurseForge</a>
+        <a class="btn" href="https://github.com/cjber/tweaks-forever/releases">GitHub releases</a>
+      </p>
+    </div>
+    <div class="shots">
+      <figure>
+        <img src="img/tweaks-forever/dungeonmap.webp" width="1200" height="964" alt="The world map inside Blackfathom Deeps, showing the painted dungeon floor" loading="lazy">
+        <figcaption>Inside a dungeon or raid, the map opens on its painted sheet.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/tweaks-forever/nameplates.webp" width="1200" height="389" alt="Three enemy nameplates, the target outlined with a Fireball cast" loading="lazy">
+        <figcaption>Nameplates in retail's own frame, with your target outlined and a quest icon on what you still need.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <article class="addon" id="legacy-forever">
+    <div class="addon-copy">
+      <header class="addon-head">
+        <img class="icon" src="icons/legacy-forever.svg" width="76" height="76" alt="">
+        <div>
+          <h2>Legacy Forever</h2>
+          <p class="tagline">Your unfinished WoW: Forever Legacy challenges, on the world map, for the zone you are looking at.</p>
+        </div>
+      </header>
+      <p class="body-copy">Legacy Forever marks unfinished Legacy challenges on the world map and tracks the ones you tick, with live progress in the objective tracker. Undiscovered areas are shaded in their real shape, and dungeon and raid entrances carry the challenge each counts toward. A zone completion percentage sits in the map's corner, and each zone with dungeon objectives left gets a badge on the continent map.</p>
+      <p class="install">
+        <span class="install-label">Install from</span>
+        <a class="btn" href="https://www.curseforge.com/wow/addons/legacy-forever">CurseForge</a>
+        <a class="btn" href="https://addons.wago.io/addons/legacy-forever">Wago Addons</a>
+      </p>
+    </div>
+    <div class="shots">
+      <figure>
+        <img src="img/legacy-forever/map.webp" width="1200" height="945" alt="Ashenvale on the world map with undiscovered areas shaded, the zone completion corner and the Legacy menu open" loading="lazy">
+        <figcaption>Half of Ashenvale explored: the shield's number is what is left on this map, and its menu lists it by challenge.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/legacy-forever/tracker.webp" width="648" height="800" alt="The objective tracker with the game's All Objectives header and the tracked Legacy challenges" loading="lazy">
+        <figcaption>Challenges you track sit in the objective tracker under the game's own header, with live progress.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <article class="addon" id="commissions-forever">
+    <div class="addon-copy">
+      <header class="addon-head">
+        <img class="icon" src="icons/commissions-forever.svg" width="76" height="76" alt="">
+        <div>
+          <h2>Commissions Forever</h2>
+          <p class="tagline">Tracks repeatable Classic turn-ins and the materials in your bags.</p>
+        </div>
+      </header>
+      <p class="body-copy">One list covers repeatable turn-ins such as Argent Dawn writs, Cenarion Circle Logistics, Thorium Brotherhood, Timbermaw Hold and Morrowgrain research, with the materials each needs and counts from your bags. Active commission objectives come from your quest log and QuestieDB. With Shortest Path Forever installed, the remaining finishers can be sent as one route.</p>
+      <p class="install">
+        <span class="install-label">Not on a store yet: install from</span>
+        <a class="btn" href="https://github.com/cjber/commissions-forever/releases">GitHub releases</a>
+      </p>
+    </div>
+    <div class="shots">
+      <figure>
+        <img src="img/commissions-forever/window.webp" width="944" height="796" alt="Commissions Forever lists turn-in materials and bag counts" loading="lazy">
+        <figcaption>The list groups your held materials and offers a route to active commission turn-ins.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <article class="addon" id="field-guide-forever">
+    <div class="addon-copy">
+      <header class="addon-head">
+        <img class="icon" src="icons/field-guide-forever.svg" width="76" height="76" alt="">
+        <div>
+          <h2>Field Guide Forever</h2>
+          <p class="tagline">A field journal for the creatures of Azeroth.</p>
+        </div>
+      </header>
+      <p class="body-copy">Hostile creature deaths in a catalogued zone are recorded in the journal, with names, levels, families and ranks read from your installed QuestieDB. Species move through a ten-step mastery track and can turn up as rare or shiny variants, with separate personal records. It is cosmetic only and never grants player power.</p>
+      <p class="install">
+        <span class="install-label">Not on a store yet: install from</span>
+        <a class="btn" href="https://github.com/cjber/field-guide-forever/releases">GitHub releases</a>
+      </p>
+    </div>
+    <div class="shots">
+      <figure>
+        <img src="img/field-guide-forever/field-guide.webp" width="1200" height="881" alt="The creatures journal" loading="lazy">
+        <figcaption>The journal catalogues creatures by zone, with their levels, families and ranks.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/field-guide-forever/rares.webp" width="1200" height="881" alt="The rares page" loading="lazy">
+        <figcaption>Rare creatures keep separate personal records.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <article class="addon" id="hoard-forever">
+    <div class="addon-copy">
+      <header class="addon-head">
+        <img class="icon" src="icons/hoard-forever.svg" width="76" height="76" alt="">
+        <div>
+          <h2>Hoard Forever</h2>
+          <p class="tagline">Search your bags, bank and alts in one window.</p>
+        </div>
+      </header>
+      <p class="body-copy">Type an item's name and Hoard Forever lists every place it sits, on the character you are on and on every alt that has logged in since the addon was installed. Results cover bags, the reagent bag, the bank and its reagent bank, and a read-only guild vault snapshot, with filters for quality, item class and item level. It only reads, and never moves, sells, mails or uses an item.</p>
+      <p class="install">
+        <span class="install-label">Not on a store yet: install from</span>
+        <a class="btn" href="https://github.com/cjber/hoard-forever/releases">GitHub releases</a>
+      </p>
+    </div>
+    <div class="shots">
+      <figure>
+        <img src="img/hoard-forever/search.webp" width="1200" height="785" alt="Matching items in bags and bank" loading="lazy">
+        <figcaption>One search finds every stack in your bags and bank.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/hoard-forever/alts.webp" width="1200" height="785" alt="Item stacks across three saved characters" loading="lazy">
+        <figcaption>Alts record themselves, so their stashes are searchable without logging over to them.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Made by Cillian Berragan. <a href="https://github.com/cjber/wow.cjber.dev">GitHub</a>, <a href="https://cjber.dev">cjber.dev</a>.</p>
+    <p>World of Warcraft is a trademark of Blizzard Entertainment, Inc. This site is not affiliated with or endorsed by Blizzard Entertainment.</p>
+  </div>
+</footer>
+
+</body>
+</html>
