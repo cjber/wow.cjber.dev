@@ -1,0 +1,34 @@
+name: Screenshots
+
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      MAGICK_VERSION: 7.1.2-35
+      MAGICK_SHA256: f111044ed06b68cfb478df724c5a32d35145afa21073242f888d234a2f8cc002
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install ImageMagick 7
+        run: |
+          mkdir -p "$RUNNER_TEMP/bin"
+          curl -fsSLo "$RUNNER_TEMP/bin/magick" \
+            "https://github.com/ImageMagick/ImageMagick/releases/download/$MAGICK_VERSION/ImageMagick-$MAGICK_VERSION-gcc-x86_64.AppImage"
+          echo "$MAGICK_SHA256  $RUNNER_TEMP/bin/magick" | sha256sum -c -
+          chmod +x "$RUNNER_TEMP/bin/magick"
+          echo "$RUNNER_TEMP/bin" >>"$GITHUB_PATH"
+      - name: Check screenshots match each addon's docs/screenshots
+        env:
+          GH_TOKEN: ${{ github.token }}
+          APPIMAGE_EXTRACT_AND_RUN: "1"
+        run: scripts/sync-screenshots.sh --check
