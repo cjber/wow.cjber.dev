@@ -1,0 +1,13 @@
+# Agents guide
+
+The one-page site for the WoW: Forever addons, served from `site/` as is: static HTML, CSS and images, no build step. `pages.yml` deploys `main` to GitHub Pages.
+
+## Commands
+
+- `scripts/sync-screenshots.sh`: copy each addon's `docs/screenshots/<name>.png` into `site/img/` and update the `<img>` sizes (needs `gh` and ImageMagick); `--check` exits 1 while a copy is stale. The weekly Screenshots workflow runs `--check`.
+
+CI (`ci.yml`) runs `workflows` (actionlint, zizmor) and `secrets` (gitleaks) on every pull request; the ruleset requires both by name.
+
+## Standards
+
+- `repo-standards`: the RS-* requirements every cjber repo meets (repo, Actions and security settings, rulesets, CI hardening, community files), a skill in cjber/skills whose `audit.py` checks this repo
