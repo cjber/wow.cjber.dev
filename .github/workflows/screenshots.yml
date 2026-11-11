@@ -33,3 +33,5 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           APPIMAGE_EXTRACT_AND_RUN: "1"
         run: scripts/sync-screenshots.sh --check
+      - name: Check the Made with players section matches each addon's THIRD_PARTY.md
+        run: python3 scripts/sync-credits.py --check

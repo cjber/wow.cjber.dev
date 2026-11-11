@@ -5,6 +5,7 @@ The one-page site for the WoW: Forever addons, served from `site/` as is: static
 ## Commands
 
 - `scripts/sync-screenshots.sh`: copy each addon's `docs/screenshots/<name>.png` into `site/img/` and update the `<img>` sizes (needs `gh` and ImageMagick); `--check` exits 1 while a copy is stale. The weekly Screenshots workflow runs `--check`.
+- `python3 scripts/sync-credits.py`: rebuild the Made with players section in `site/index.html` from each addon's `THIRD_PARTY.md` on main; `--check` exits 1 while it is stale. The weekly Screenshots workflow runs `--check`.
 
 CI (`ci.yml`) runs `workflows` (actionlint, zizmor) and `secrets` (gitleaks) on every pull request; the ruleset requires both by name.
 
