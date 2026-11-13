@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forever profile</title>
+<meta name="description" content="One Forever player's own progress, read from the code in this page's link. Nothing is uploaded, stored or tracked.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#14100b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6efe2" media="(prefers-color-scheme: light)">
+<style>
+  /* The addons page's palette and type, without its web font request: this page loads nothing but itself. */
+  :root {
+    color-scheme: dark;
+    --bg: #14100b;
+    --bg-top: #241a12;
+    --panel: #1d1610;
+    --panel-soft: rgba(217, 164, 65, 0.05);
+    --panel-edge: rgba(217, 164, 65, 0.22);
+    --panel-edge-strong: rgba(217, 164, 65, 0.45);
+    --ink: #f3e9d7;
+    --muted: #bdab92;
+    --faint: #8f7d66;
+    --gold: #d9a441;
+    --gold-bright: #f2c14e;
+    --gold-wash: rgba(217, 164, 65, 0.12);
+    --alliance: #7db4e8;
+    --horde: #f07a63;
+    --neutral: #d9a441;
+    --shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      color-scheme: light;
+      --bg: #f6efe2;
+      --bg-top: #fff8ea;
+      --panel: #fffaf0;
+      --panel-soft: rgba(122, 79, 20, 0.04);
+      --panel-edge: rgba(122, 79, 20, 0.18);
+      --panel-edge-strong: rgba(122, 79, 20, 0.4);
+      --ink: #241a11;
+      --muted: #6b5a45;
+      --faint: #7a684f;
+      --gold: #8a5a12;
+      --gold-bright: #7a4f14;
+      --gold-wash: rgba(122, 79, 20, 0.08);
+      --alliance: #1f5f9e;
+      --horde: #a8321f;
+      --neutral: #8a5a12;
+      --shadow: 0 18px 40px rgba(74, 50, 20, 0.12);
+    }
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    background-image: radial-gradient(120% 60% at 50% 0%, var(--bg-top), transparent 70%);
+    background-repeat: no-repeat;
+    color: var(--ink);
+    font-family: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2 {
+    font-family: "Cinzel", Georgia, "Times New Roman", serif;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: var(--gold-bright);
+    text-decoration-color: var(--panel-edge-strong);
+    text-underline-offset: 0.18em;
+  }
+
+  a:hover {
+    text-decoration-color: currentColor;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--gold-bright);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  code {
+    padding: 0.1em 0.35em;
+    border: 1px solid var(--panel-edge);
+    border-radius: 5px;
+    background: var(--gold-wash);
+    color: var(--gold-bright);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.92em;
+    white-space: nowrap;
+  }
+
+  .top {
+    border-bottom: 1px solid var(--panel-edge);
+  }
+
+  .top .wrap {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 0;
+  }
+
+  .brand {
+    color: var(--ink);
+    font-family: "Cinzel", Georgia, "Times New Roman", serif;
+    font-size: 0.98rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  .brand:hover {
+    color: var(--gold-bright);
+  }
+
+  .top-note {
+    color: var(--faint);
+    font-size: 0.86rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .wrap {
+    width: min(1000px, 100% - 32px);
+    margin-inline: auto;
+  }
+
+  main {
+    padding: clamp(28px, 6vw, 56px) 0 clamp(40px, 8vw, 72px);
+  }
+
+  .eyebrow {
+    margin: 0 0 10px;
+    color: var(--gold);
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .lede {
+    max-width: 62ch;
+    margin-top: 14px;
+    color: var(--muted);
+  }
+
+  /* The card */
+  .card {
+    padding: clamp(20px, 4vw, 36px);
+    border: 1px solid var(--panel-edge-strong);
+    border-radius: 16px;
+    background: var(--panel);
+    box-shadow: var(--shadow);
+  }
+
+  .card-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 14px 20px;
+    padding-bottom: clamp(16px, 3vw, 24px);
+    border-bottom: 1px solid var(--panel-edge);
+  }
+
+  .card-head h1 {
+    font-size: clamp(1.7rem, 5vw, 2.6rem);
+    letter-spacing: 0.01em;
+    overflow-wrap: anywhere;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 0.98rem;
+  }
+
+  .level {
+    padding: 2px 10px;
+    border: 1px solid var(--panel-edge);
+    border-radius: 999px;
+    background: var(--gold-wash);
+    color: var(--gold-bright);
+    font-size: 0.86rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--faint);
+  }
+
+  .faction {
+    font-weight: 600;
+  }
+
+  .faction.alliance {
+    color: var(--alliance);
+  }
+
+  .faction.horde {
+    color: var(--horde);
+  }
+
+  .faction.neutral {
+    color: var(--neutral);
+  }
+
+  .made {
+    margin-top: 8px;
+    color: var(--faint);
+    font-size: 0.86rem;
+  }
+
+  /* Columns rather than a row grid: Field Guide carries far more numbers than the others, and a row grid would
+     stretch every short card to its height. */
+  .sections {
+    margin-top: clamp(16px, 3vw, 24px);
+    columns: 2;
+    column-gap: 16px;
+  }
+
+  .group {
+    padding: 16px 18px 10px;
+    margin-bottom: 16px;
+    border: 1px solid var(--panel-edge);
+    border-radius: 12px;
+    background: var(--panel-soft);
+    break-inside: avoid;
+  }
+
+  .group-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 10px;
+  }
+
+  .group-head img {
+    flex: none;
+    width: 30px;
+    height: 30px;
+  }
+
+  .group-head h2 {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .stats {
+    margin: 0;
+  }
+
+  .stat {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 7px 0;
+    border-top: 1px solid var(--panel-edge);
+  }
+
+  .stat dt {
+    color: var(--muted);
+  }
+
+  .stat dd {
+    margin: 0;
+    color: var(--ink);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .stat .unit {
+    margin-left: 5px;
+    color: var(--faint);
+    font-size: 0.82em;
+    font-weight: 400;
+  }
+
+  .nothing {
+    margin-top: 16px;
+    color: var(--muted);
+  }
+
+  .card-foot {
+    margin-top: clamp(18px, 3vw, 24px);
+    padding-top: 14px;
+    border-top: 1px solid var(--panel-edge);
+    color: var(--faint);
+    font-size: 0.86rem;
+  }
+
+  /* The empty and error states */
+  .intro {
+    max-width: 760px;
+    padding: clamp(22px, 4vw, 36px);
+    border: 1px solid var(--panel-edge-strong);
+    border-radius: 16px;
+    background: var(--panel);
+    box-shadow: var(--shadow);
+  }
+
+  .intro h1 {
+    font-size: clamp(1.7rem, 5vw, 2.5rem);
+  }
+
+  .steps {
+    margin: 22px 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+  }
+
+  .steps li {
+    position: relative;
+    padding: 10px 0 10px 44px;
+    border-top: 1px solid var(--panel-edge);
+    color: var(--muted);
+    counter-increment: step;
+  }
+
+  .steps li::before {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--panel-edge-strong);
+    border-radius: 50%;
+    background: var(--gold-wash);
+    color: var(--gold-bright);
+    font-size: 0.82rem;
+    font-weight: 600;
+    content: counter(step);
+  }
+
+  .steps strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .note {
+    margin-top: 18px;
+    color: var(--faint);
+    font-size: 0.9rem;
+  }
+
+  .example-line {
+    margin-top: 20px;
+  }
+
+  .example-line a {
+    font-weight: 600;
+  }
+
+  .error-detail {
+    margin-top: 14px;
+    color: var(--muted);
+  }
+
+  .links {
+    margin-top: 20px;
+    color: var(--faint);
+  }
+
+  .footer {
+    padding: 24px 0 40px;
+    border-top: 1px solid var(--panel-edge);
+    color: var(--faint);
+    font-size: 0.88rem;
+  }
+
+  .footer p + p {
+    margin-top: 6px;
+  }
+
+  .footer a {
+    color: var(--muted);
+  }
+
+  .footer a:hover {
+    color: var(--gold-bright);
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  @media (max-width: 760px) {
+    .sections {
+      columns: 1;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .wrap {
+      width: min(1000px, 100% - 24px);
+    }
+
+    .top-note {
+      display: none;
+    }
+
+    .group-head h2 {
+      font-size: 0.95rem;
+    }
+
+    .stat {
+      gap: 8px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../">WoW: Forever</a>
+    <span class="top-note">Profile</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="intro" id="empty" hidden>
+    <p class="eyebrow">Forever profile</p>
+    <h1>Your character's card</h1>
+    <p class="lede">The Forever addons can turn one character's own progress into a single link: quests, journeys and distance, recipes, flight paths, commissions and the creatures you have met. Sharing the link shares the card.</p>
+    <ol class="steps">
+      <li>In game, type <code>/forever profile</code>.</li>
+      <li>The window shows a link, already selected. Press <strong>Ctrl+C</strong> (<strong>Cmd+C</strong> on a Mac).</li>
+      <li>Open the link here to see the card, or send it to a friend.</li>
+    </ol>
+    <p class="note">The code is in the part of the link after the <code>#</code>, so it never reaches this site's server. Nothing is uploaded, stored or tracked, and there are no accounts.</p>
+    <p class="example-line"><a id="example" href="#">See an example</a></p>
+    <noscript><p class="note">This page needs JavaScript to read the code in a profile link.</p></noscript>
+  </section>
+
+  <section class="card" id="card" hidden>
+    <header class="card-head">
+      <div>
+        <p class="eyebrow">Forever profile</p>
+        <h1 id="name">A Forever character</h1>
+        <p class="meta">
+          <span class="level" id="level"></span>
+          <span class="dot" aria-hidden="true"></span>
+          <span id="class"></span>
+          <span class="dot" aria-hidden="true"></span>
+          <span class="faction" id="faction"></span>
+        </p>
+        <p class="made" id="made"></p>
+      </div>
+    </header>
+    <div class="sections" id="sections"></div>
+    <p class="nothing" id="nothing" hidden>None of the Forever addons has recorded anything for this character yet.</p>
+    <p class="card-foot">Made in game with <code>/forever profile</code>. The code came from the link, not from this site.</p>
+  </section>
+
+  <section class="intro" id="error" hidden>
+    <p class="eyebrow">Forever profile</p>
+    <h1>This code is not one this page can read</h1>
+    <p class="error-detail" id="error-detail"></p>
+    <p class="links"><a href="../">The addons</a> &middot; <a href="#" id="error-example">See an example</a></p>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Made by Cillian Berragan. <a href="https://github.com/cjber/wow.cjber.dev">GitHub</a>, <a href="https://cjber.dev">cjber.dev</a>.</p>
+    <p>World of Warcraft is a trademark of Blizzard Entertainment, Inc. This site is not affiliated with or endorsed by Blizzard Entertainment.</p>
+  </div>
+</footer>
+
+<script>
+  "use strict";
+
+  // The example from forever-core's docs/profile-code-example.txt: Barry Buckfast, level 21 Hunter, Alliance.
+  var EXAMPLE = "1.eyJuIjoiQmFycnkgQnVja2Zhc3QiLCJjIjoiSFVOVEVSIiwibCI6MjEsImYiOiJBbGxpYW5jZSIsInQiOjE3OTQ1MTYwNjAsInMiOnsiYWR2Ijp7InF1ZXN0X3R1cm5faW4iOjk2LCJxdWVzdF90dXJuX2lucyI6OTZ9LCJjb20iOnsiY29tbWlzc2lvbl90dXJuaW4iOjd9LCJmZ2QiOnsiYm9zc19maXJzdF9raWxsIjoyLCJib3NzX2ZpcnN0X3NpZ2h0aW5nIjo0LCJib3NzX2tpbGxzIjo0LCJib3NzX3NpZ2h0aW5ncyI6MjMsImJyb256ZV9maW5kcyI6MywiY3JlYXR1cmVfa2lsbHMiOjUxNywiZmlyc3RfYnJvbnplIjoyLCJmaXJzdF9nb2xkIjoxLCJmaXJzdF9raWxsIjozLCJmaXJzdF9zaGlueSI6MSwiZmlyc3Rfc2lnaHRpbmciOjYsImZpcnN0X3NpbHZlciI6MiwiZ29sZF9maW5kcyI6Miwic2hpbnlfZmluZHMiOjEsInNpbHZlcl9maW5kcyI6NX0sImxlZyI6eyJmbGlnaHRfcGF0aF9rbm93biI6MTh9LCJza2wiOnsicmVjaXBlc19vYnNlcnZlZF9sZWFybmVkIjo0Mn0sInNwZiI6eyJkaXN0YW5jZV95YXJkcyI6MTI4NDUwLCJmbGlnaHRzX3Rha2VuIjoyNywicG9ydGFsc191c2VkIjo2LCJyb3V0ZXNfY29tcGxldGVkIjozNCwidHJhbnNwb3J0c191c2VkIjoxOX19fQ";
+  var VERSION = 1;
+
+  // Each addon a code may carry, in the order the card shows them: its name and the icon the addons page already has.
+  var ADDONS = {
+    adv: { name: "Adventure Guide Forever", icon: "../icons/adventure-guide-forever.svg" },
+    spf: { name: "Shortest Path Forever", icon: "../icons/shortest-path-forever.svg" },
+    skl: { name: "SkillUp Forever", icon: "../icons/skillup-forever.svg" },
+    leg: { name: "Legacy Forever", icon: "../icons/legacy-forever.svg" },
+    com: { name: "Commissions Forever", icon: "../icons/commissions-forever.svg" },
+    fgd: { name: "Field Guide Forever", icon: "../icons/field-guide-forever.svg" }
+  };
+  var ADDON_ORDER = ["adv", "spf", "skl", "leg", "com", "fgd"];
+
+  // The labels and units for every stat key in forever-core's docs/profile-code.md. A key this table does not know
+  // still draws: its label is made from the key and it has no unit, so a newer code degrades instead of breaking.
+  var STATS = {
+    adv: {
+      // The per-quest rows sum to the aggregate, so the card shows the total once.
+      quest_turn_in: { hidden: true },
+      quest_turn_ins: { label: "Quests turned in", unit: "quests" }
+    },
+    spf: {
+      distance_yards: { label: "Distance travelled", unit: "yards" },
+      routes_completed: { label: "Journeys", unit: "journeys" },
+      transports_used: { label: "Transports used", unit: "transports" },
+      flights_taken: { label: "Flights taken", unit: "flights" },
+      portals_used: { label: "Portals used", unit: "portals" }
+    },
+    skl: {
+      recipes_observed_learned: { label: "Recipes learned", unit: "recipes" }
+    },
+    leg: {
+      flight_path_known: { label: "Flight paths known", unit: "flight paths" }
+    },
+    com: {
+      commission_turnin: { label: "Commissions turned in", unit: "commissions" }
+    },
+    fgd: {
+      boss_first_kill: { label: "Boss first kills", unit: "bosses" },
+      boss_first_sighting: { label: "Boss first sightings", unit: "bosses" },
+      boss_kills: { label: "Boss kills", unit: "bosses" },
+      boss_sightings: { label: "Boss sightings", unit: "bosses" },
+      bronze_finds: { label: "Bronze finds", unit: "creatures" },
+      creature_kills: { label: "Creatures killed", unit: "kills" },
+      first_bronze: { label: "First bronze finds", unit: "creatures" },
+      first_gold: { label: "First gold finds", unit: "creatures" },
+      first_kill: { label: "First kills", unit: "creatures" },
+      first_shiny: { label: "First shiny finds", unit: "creatures" },
+      first_sighting: { label: "First sightings", unit: "creatures" },
+      first_silver: { label: "First silver finds", unit: "creatures" },
+      gold_finds: { label: "Gold finds", unit: "creatures" },
+      shiny_finds: { label: "Shiny finds", unit: "creatures" },
+      silver_finds: { label: "Silver finds", unit: "creatures" }
+    }
+  };
+
+  var CLASSES = {
+    DEATHKNIGHT: "Death Knight",
+    DEMONHUNTER: "Demon Hunter",
+    DRUID: "Druid",
+    EVOKER: "Evoker",
+    HUNTER: "Hunter",
+    MAGE: "Mage",
+    MONK: "Monk",
+    PALADIN: "Paladin",
+    PRIEST: "Priest",
+    ROGUE: "Rogue",
+    SHAMAN: "Shaman",
+    WARLOCK: "Warlock",
+    WARRIOR: "Warrior"
+  };
+
+  var FACTION_CLASSES = { Alliance: "alliance", Horde: "horde", Neutral: "neutral" };
+
+  var number = new Intl.NumberFormat("en-GB");
+
+  function el(tag, className, text) {
+    var node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function humanise(key) {
+    var words = String(key).replace(/_/g, " ");
+    return words.charAt(0).toUpperCase() + words.slice(1);
+  }
+
+  // Version, dot, base64url, then UTF-8 JSON (docs/profile-code.md). An unknown version is refused by name rather
+  // than read as if it were this one.
+  function decode(code) {
+    var match = /^(\d+)\.([A-Za-z0-9_-]+)$/.exec(code);
+    if (!match) throw { kind: "shape" };
+    if (Number(match[1]) !== VERSION) throw { kind: "version", version: match[1] };
+    var base64 = match[2].replace(/-/g, "+").replace(/_/g, "/");
+    while (base64.length % 4) base64 += "=";
+    var binary = atob(base64);
+    var bytes = new Uint8Array(binary.length);
+    for (var index = 0; index < binary.length; index += 1) {
+      bytes[index] = binary.charCodeAt(index);
+    }
+    var text = new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+    return JSON.parse(text);
+  }
+
+  function isRecord(record) {
+    return record !== null && typeof record === "object" &&
+      typeof record.n === "string" &&
+      typeof record.c === "string" &&
+      typeof record.l === "number" &&
+      typeof record.f === "string" &&
+      typeof record.t === "number" &&
+      record.s !== null && typeof record.s === "object";
+  }
+
+  function madeDate(unix) {
+    var date = new Date(unix * 1000);
+    if (!unix || isNaN(date.getTime())) return "";
+    return "Made " + date.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+  }
+
+  // A section's metrics in the docs' order, then any key a newer code added, alphabetical.
+  function metricsFor(addonKey, stats) {
+    var known = STATS[addonKey] || {};
+    var keys = [];
+    Object.keys(known).forEach(function (key) {
+      if (Object.prototype.hasOwnProperty.call(stats, key)) keys.push(key);
+    });
+    Object.keys(stats).sort().forEach(function (key) {
+      if (!Object.prototype.hasOwnProperty.call(known, key)) keys.push(key);
+    });
+    return keys;
+  }
+
+  function drawGroup(addonKey, stats) {
+    var spec = STATS[addonKey] || {};
+    var rows = [];
+    metricsFor(addonKey, stats).forEach(function (key) {
+      var value = stats[key];
+      var detail = spec[key] || {};
+      // Zero is what an addon reports for a metric this character has not touched: it stays in the code and out of
+      // the card, so the card is progress rather than a checklist of blanks.
+      if (detail.hidden || typeof value !== "number" || value <= 0) return;
+      var row = el("div", "stat");
+      row.appendChild(el("dt", null, detail.label || humanise(key)));
+      var cell = el("dd", null, number.format(value));
+      if (detail.unit) cell.appendChild(el("span", "unit", detail.unit));
+      row.appendChild(cell);
+      rows.push(row);
+    });
+    if (!rows.length) return null;
+    var addon = ADDONS[addonKey] || { name: humanise(addonKey), icon: "" };
+    var group = el("section", "group");
+    var head = el("div", "group-head");
+    if (addon.icon) {
+      var icon = el("img");
+      icon.src = addon.icon;
+      icon.alt = "";
+      icon.width = 30;
+      icon.height = 30;
+      head.appendChild(icon);
+    }
+    head.appendChild(el("h2", null, addon.name));
+    group.appendChild(head);
+    var list = el("dl", "stats");
+    rows.forEach(function (row) {
+      list.appendChild(row);
+    });
+    group.appendChild(list);
+    return group;
+  }
+
+  function show(id) {
+    ["empty", "card", "error"].forEach(function (name) {
+      document.getElementById(name).hidden = name !== id;
+    });
+  }
+
+  function render(record) {
+    show("card");
+    document.getElementById("name").textContent = record.n || "A Forever character";
+    document.getElementById("level").textContent = record.l > 0 ? "Level " + number.format(record.l) : "";
+    document.getElementById("class").textContent = CLASSES[record.c] || humanise(String(record.c).toLowerCase());
+    var faction = document.getElementById("faction");
+    faction.textContent = record.f;
+    faction.className = "faction " + (FACTION_CLASSES[record.f] || "");
+    document.getElementById("made").textContent = madeDate(record.t);
+
+    var sections = document.getElementById("sections");
+    sections.textContent = "";
+    sections.hidden = false;
+    ADDON_ORDER.forEach(function (key) {
+      var stats = record.s[key];
+      if (stats === null || typeof stats !== "object") return;
+      var group = drawGroup(key, stats);
+      if (group) sections.appendChild(group);
+    });
+    if (!sections.children.length) sections.hidden = true;
+    document.getElementById("nothing").hidden = sections.children.length > 0;
+    document.title = (record.n || "A Forever character") + " - Forever profile";
+  }
+
+  function fail(error) {
+    show("error");
+    var detail = document.getElementById("error-detail");
+    if (error && error.kind === "version") {
+      detail.textContent = "This page reads version " + VERSION + " codes, and this link holds version " +
+        error.version + ". A newer page can read it.";
+    } else if (error && error.kind === "shape") {
+      detail.textContent = "The part after the # is not shaped like a Forever profile code. Check that the whole " +
+        "link was copied.";
+    } else {
+      detail.textContent = "The code after the # could not be decoded. Check that the whole link was copied, or " +
+        "make a fresh one with /forever profile in game.";
+    }
+    document.title = "Forever profile";
+  }
+
+  function route() {
+    var code = window.location.hash.replace(/^#/, "");
+    if (!code) {
+      show("empty");
+      document.title = "Forever profile";
+      return;
+    }
+    try {
+      var record = decode(code);
+      if (!isRecord(record)) {
+        fail({ kind: "shape" });
+        return;
+      }
+      render(record);
+    } catch (error) {
+      fail(error);
+    }
+  }
+
+  document.getElementById("example").href = "#" + EXAMPLE;
+  document.getElementById("error-example").href = "#" + EXAMPLE;
+  window.addEventListener("hashchange", route);
+  route();
+</script>
+</body>
+</html>
