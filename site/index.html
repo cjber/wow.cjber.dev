@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>WoW: Forever addons by Cillian Berragan</title>
-<meta name="description" content="Seven free, open-source addons for World of Warcraft: Forever: quests and travel, professions, quality-of-life tweaks, Legacy challenges, commissions and a creature field guide.">
+<meta name="description" content="Eight free, open-source addons for World of Warcraft: Forever: quests and travel, professions, quality-of-life tweaks, macros, Legacy challenges, commissions and a creature field guide.">
 <link rel="canonical" href="https://wow.cjber.dev/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#14100b" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f6efe2" media="(prefers-color-scheme: light)">
 <meta property="og:type" content="website">
 <meta property="og:title" content="WoW: Forever addons by Cillian Berragan">
-<meta property="og:description" content="Seven free, open-source addons for World of Warcraft: Forever: quests and travel, professions, quality-of-life tweaks, Legacy challenges, commissions and a creature field guide.">
+<meta property="og:description" content="Eight free, open-source addons for World of Warcraft: Forever: quests and travel, professions, quality-of-life tweaks, macros, Legacy challenges, commissions and a creature field guide.">
 <meta property="og:url" content="https://wow.cjber.dev/">
 <meta property="og:image" content="https://wow.cjber.dev/og.png">
 <meta property="og:image:width" content="1200">
@@ -278,6 +278,16 @@
     text-transform: uppercase;
   }
 
+  .downloads {
+    color: var(--faint);
+    font-size: 0.9rem;
+  }
+
+  .downloads strong {
+    color: var(--muted);
+    font-weight: 600;
+  }
+
   .btn {
     display: inline-block;
     padding: 9px 16px;
@@ -462,8 +472,8 @@
   <div class="wrap">
     <p class="eyebrow">World of Warcraft: Forever</p>
     <h1>Addons for WoW: Forever</h1>
-    <p class="lede">Seven addons that make questing, travel, professions and challenges easier to follow. Every one is <strong>free and open source</strong>.</p>
-    <p class="lede">Each works on its own, and they work together when you install more than one. Five are published addons, and two install from GitHub releases.</p>
+    <p class="lede">Eight addons that make questing, travel, professions, macros and challenges easier to follow. Every one is <strong>free and open source</strong>.</p>
+    <p class="lede">Each works on its own, and they work together when you install more than one. Players have downloaded them <strong data-downloads="total">3.1M</strong> times on CurseForge.</p>
 
     <nav class="jump" aria-label="Jump to a section">
       <h2>Jump to</h2>
@@ -474,6 +484,7 @@
         <li><a href="#tweaks-forever">Tweaks Forever</a></li>
         <li><a href="#legacy-forever">Legacy Forever</a></li>
         <li><a href="#commissions-forever">Commissions Forever</a></li>
+        <li><a href="#macro-assist-forever">Macro Assist Forever</a></li>
         <li><a href="#field-guide-forever">Field Guide Forever</a></li>
         <li><a href="#players">Made with players</a></li>
       </ul>
@@ -483,7 +494,7 @@
 
 <main class="wrap addons" id="addons">
 
-  <article class="addon" id="adventure-guide-forever">
+  <article class="addon" id="adventure-guide-forever" data-curseforge="1711538">
     <div class="addon-copy">
       <header class="addon-head">
         <img class="icon" src="icons/adventure-guide-forever.svg" width="76" height="76" alt="">
@@ -497,6 +508,7 @@
         <span class="install-label">Install from</span>
         <a class="btn" href="https://www.curseforge.com/wow/addons/adventure-guide-forever">CurseForge</a>
         <a class="btn" href="https://addons.wago.io/addons/adventure-guide-forever">Wago Addons</a>
+        <span class="downloads"><strong data-downloads="adventure-guide-forever">64K</strong> downloads on CurseForge</span>
       </p>
     </div>
     <div class="shots">
@@ -511,7 +523,7 @@
     </div>
   </article>
 
-  <article class="addon" id="shortest-path-forever">
+  <article class="addon" id="shortest-path-forever" data-curseforge="1708599">
     <div class="addon-copy">
       <header class="addon-head">
         <img class="icon" src="icons/shortest-path-forever.svg" width="76" height="76" alt="">
@@ -525,6 +537,7 @@
         <span class="install-label">Install from</span>
         <a class="btn" href="https://www.curseforge.com/wow/addons/shortest-path-forever">CurseForge</a>
         <a class="btn" href="https://addons.wago.io/addons/shortest-path-forever">Wago Addons</a>
+        <span class="downloads"><strong data-downloads="shortest-path-forever">1.3M</strong> downloads on CurseForge</span>
       </p>
     </div>
     <div class="shots">
@@ -539,7 +552,7 @@
     </div>
   </article>
 
-  <article class="addon" id="skillup-forever">
+  <article class="addon" id="skillup-forever" data-curseforge="1705762">
     <div class="addon-copy">
       <header class="addon-head">
         <img class="icon" src="icons/skillup-forever.svg" width="76" height="76" alt="">
@@ -553,6 +566,7 @@
         <span class="install-label">Install from</span>
         <a class="btn" href="https://www.curseforge.com/wow/addons/skillup-forever">CurseForge</a>
         <a class="btn" href="https://addons.wago.io/addons/skillup-forever">Wago Addons</a>
+        <span class="downloads"><strong data-downloads="skillup-forever">1.7M</strong> downloads on CurseForge</span>
       </p>
     </div>
     <div class="shots">
@@ -567,7 +581,7 @@
     </div>
   </article>
 
-  <article class="addon" id="tweaks-forever">
+  <article class="addon" id="tweaks-forever" data-curseforge="1708506">
     <div class="addon-copy">
       <header class="addon-head">
         <img class="icon" src="icons/tweaks-forever.svg" width="76" height="76" alt="">
@@ -580,7 +594,8 @@
       <p class="install">
         <span class="install-label">Install from</span>
         <a class="btn" href="https://www.curseforge.com/wow/addons/tweaks-forever">CurseForge</a>
-        <a class="btn" href="https://github.com/cjber/tweaks-forever/releases">GitHub releases</a>
+        <a class="btn" href="https://addons.wago.io/addons/tweaks-forever">Wago Addons</a>
+        <span class="downloads"><strong data-downloads="tweaks-forever">17K</strong> downloads on CurseForge</span>
       </p>
     </div>
     <div class="shots">
@@ -595,7 +610,7 @@
     </div>
   </article>
 
-  <article class="addon" id="legacy-forever">
+  <article class="addon" id="legacy-forever" data-curseforge="1705879">
     <div class="addon-copy">
       <header class="addon-head">
         <img class="icon" src="icons/legacy-forever.svg" width="76" height="76" alt="">
@@ -609,6 +624,7 @@
         <span class="install-label">Install from</span>
         <a class="btn" href="https://www.curseforge.com/wow/addons/legacy-forever">CurseForge</a>
         <a class="btn" href="https://addons.wago.io/addons/legacy-forever">Wago Addons</a>
+        <span class="downloads"><strong data-downloads="legacy-forever">50K</strong> downloads on CurseForge</span>
       </p>
     </div>
     <div class="shots">
@@ -623,7 +639,7 @@
     </div>
   </article>
 
-  <article class="addon" id="commissions-forever">
+  <article class="addon" id="commissions-forever" data-curseforge="1794367">
     <div class="addon-copy">
       <header class="addon-head">
         <img class="icon" src="icons/commissions-forever.svg" width="76" height="76" alt="">
@@ -634,8 +650,10 @@
       </header>
       <p class="body-copy">One list covers repeatable turn-ins such as Argent Dawn writs, Cenarion Circle Logistics, Thorium Brotherhood, Timbermaw Hold and Morrowgrain research, with the materials each needs and counts from your bags. Active commission objectives come from your quest log and QuestieDB. With Shortest Path Forever installed, the remaining finishers can be sent as one route.</p>
       <p class="install">
-        <span class="install-label">Not on a store yet: install from</span>
-        <a class="btn" href="https://github.com/cjber/commissions-forever/releases">GitHub releases</a>
+        <span class="install-label">Install from</span>
+        <a class="btn" href="https://www.curseforge.com/wow/addons/commissions-forever">CurseForge</a>
+        <a class="btn" href="https://addons.wago.io/addons/commissions-forever">Wago Addons</a>
+        <span class="downloads"><strong data-downloads="commissions-forever">722</strong> downloads on CurseForge</span>
       </p>
     </div>
     <div class="shots">
@@ -646,7 +664,36 @@
     </div>
   </article>
 
-  <article class="addon" id="field-guide-forever">
+  <article class="addon" id="macro-assist-forever" data-curseforge="1795141">
+    <div class="addon-copy">
+      <header class="addon-head">
+        <img class="icon" src="icons/macro-assist-forever.svg" width="76" height="76" alt="">
+        <div>
+          <h2>Macro Assist Forever</h2>
+          <p class="tagline">A macro window of its own: every macro in one list, and an editor with live checks.</p>
+        </div>
+      </header>
+      <p class="body-copy">Every macro sits in one searchable list with a short summary of what it does, beside a mono-font editor with line numbers and colour for commands, conditions and spells. Completions show each condition's live value, recipes for your class are checked against your spellbook, and anything the game cannot run is underlined with a fix one Tab away. It can also shorten a macro that runs over 255 characters and restore earlier versions.</p>
+      <p class="install">
+        <span class="install-label">Install from</span>
+        <a class="btn" href="https://www.curseforge.com/wow/addons/macro-assist-forever">CurseForge</a>
+        <a class="btn" href="https://addons.wago.io/addons/macro-assist-forever">Wago Addons</a>
+        <span class="downloads"><strong data-downloads="macro-assist-forever">1.5K</strong> downloads on CurseForge</span>
+      </p>
+    </div>
+    <div class="shots">
+      <figure>
+        <img src="img/macro-assist-forever/window.webp" width="1200" height="699" alt="The macro list beside the mono editor" loading="lazy">
+        <figcaption>The searchable list on the left, the selected macro in the editor, and what it does below the code.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/macro-assist-forever/completion.webp" width="1200" height="699" alt="Conditions offered with live values beside a problem in the macro" loading="lazy">
+        <figcaption>Completions show each condition's value right now, and problems come with a fix.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <article class="addon" id="field-guide-forever" data-curseforge="1786835">
     <div class="addon-copy">
       <header class="addon-head">
         <img class="icon" src="icons/field-guide-forever.svg" width="76" height="76" alt="">
@@ -660,6 +707,7 @@
         <span class="install-label">Install from</span>
         <a class="btn" href="https://www.curseforge.com/wow/addons/field-guide-forever">CurseForge</a>
         <a class="btn" href="https://addons.wago.io/addons/field-guide-forever">Wago Addons</a>
+        <span class="downloads"><strong data-downloads="field-guide-forever">1.5K</strong> downloads on CurseForge</span>
       </p>
     </div>
     <div class="shots">
