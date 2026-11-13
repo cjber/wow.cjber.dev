@@ -36,3 +36,6 @@ export async function onRequestGet(context) {
 	headers.set("Cache-Control", "public, max-age=300");
 	return new Response(rewritten.body, { status: rewritten.status, headers });
 }
+
+// HEAD gets the same headers as GET; without this it would skip the function and get the static page.
+export const onRequestHead = onRequestGet;

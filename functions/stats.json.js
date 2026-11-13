@@ -11,3 +11,6 @@ export async function onRequestGet(context) {
 		return Response.json({ error: error.message }, { status: 502 });
 	}
 }
+
+// HEAD gets the same headers as GET; without this it would skip the function and get the static page.
+export const onRequestHead = onRequestGet;

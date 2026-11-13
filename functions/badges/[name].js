@@ -27,3 +27,6 @@ export async function onRequestGet(context) {
 		{ headers: { "Cache-Control": "public, max-age=3600" } },
 	);
 }
+
+// HEAD gets the same headers as GET; without this it would skip the function and get the static page.
+export const onRequestHead = onRequestGet;
