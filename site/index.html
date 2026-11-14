@@ -219,6 +219,12 @@
     padding: clamp(16px, 4vw, 28px) 0 0;
   }
 
+  .shots-note {
+    margin: 0;
+    color: var(--faint);
+    font-size: 0.9rem;
+  }
+
   .addon {
     display: grid;
     gap: 24px;
@@ -494,6 +500,8 @@
 
 <main class="wrap addons" id="addons">
 
+  <p class="shots-note">Screenshots are rendered previews of each addon's interface, not in-game captures.</p>
+
   <article class="addon" id="adventure-guide-forever" data-curseforge="1711538">
     <div class="addon-copy">
       <header class="addon-head">
@@ -517,7 +525,7 @@
         <figcaption>Each number is a stop on the route: a pickup, an objective or a hand-in.</figcaption>
       </figure>
       <figure>
-        <img src="img/adventure-guide-forever/tracker.webp" width="389" height="398" alt="The Adventure Guide tracker section" loading="lazy">
+        <img src="img/adventure-guide-forever/tracker.webp" width="389" height="396" alt="The Adventure Guide tracker section" loading="lazy">
         <figcaption>Your next stop sits beside your quests, with travel time when Shortest Path Forever has an estimate.</figcaption>
       </figure>
     </div>
@@ -542,11 +550,11 @@
     </div>
     <div class="shots">
       <figure>
-        <img src="img/shortest-path-forever/tracker.webp" width="648" height="399" alt="Journey steps from Auberdine to Silithus" loading="lazy">
+        <img src="img/shortest-path-forever/tracker.webp" width="648" height="396" alt="Journey steps from Auberdine to Silithus" loading="lazy">
         <figcaption>The tracker shows each step, with time and distance remaining.</figcaption>
       </figure>
       <figure>
-        <img src="img/shortest-path-forever/minimap.webp" width="526" height="589" alt="A route and the game's waypoint on the minimap" loading="lazy">
+        <img src="img/shortest-path-forever/minimap.webp" width="526" height="592" alt="A route and the game's waypoint on the minimap" loading="lazy">
         <figcaption>Breadcrumbs show the walking route. The waypoint leads to the next step.</figcaption>
       </figure>
     </div>
@@ -571,11 +579,11 @@
     </div>
     <div class="shots">
       <figure>
-        <img src="img/skillup-forever/window.webp" width="1200" height="718" alt="The Leatherworking window with skill-up chance and cost on each recipe row, and a tooltip showing reagent prices" loading="lazy">
+        <img src="img/skillup-forever/window.webp" width="1200" height="712" alt="The Leatherworking window with skill-up chance and cost on each recipe row, and a tooltip showing reagent prices" loading="lazy">
         <figcaption>Each row shows its chance and cost. The tooltip beside the window prices each reagent.</figcaption>
       </figure>
       <figure>
-        <img src="img/skillup-forever/route.webp" width="1200" height="1010" alt="The SkillUp route tab with training and crafting steps and the reagents they need" loading="lazy">
+        <img src="img/skillup-forever/route.webp" width="1200" height="1058" alt="The SkillUp route tab with training and crafting steps and the reagents they need" loading="lazy">
         <figcaption>The route tab lists training and crafting steps with their costs and the reagents they need.</figcaption>
       </figure>
     </div>
@@ -633,7 +641,7 @@
         <figcaption>Half of Ashenvale explored: the shield's number is what is left on this map, and its menu lists it by challenge.</figcaption>
       </figure>
       <figure>
-        <img src="img/legacy-forever/tracker.webp" width="664" height="859" alt="The objective tracker with the game's All Objectives header and the tracked Legacy challenges" loading="lazy">
+        <img src="img/legacy-forever/tracker.webp" width="664" height="856" alt="The objective tracker with the game's All Objectives header and the tracked Legacy challenges" loading="lazy">
         <figcaption>Challenges you track sit in the objective tracker under the game's own header, with live progress.</figcaption>
       </figure>
     </div>
@@ -730,36 +738,44 @@
     <p class="credits-lede">Every name here reported a bug or asked for a feature that shipped, ranked by how many.</p>
     <!-- credits:start -->
     <ul class="credits-list" role="list">
-      <li title="Helped: Shortest Path Forever, SkillUp Forever, Legacy Forever, Tweaks Forever"><span class="credit-name">Mouchoir</span><span class="credit-count">8<span class="visually-hidden"> contributions</span></span></li>
+      <li title="Helped: Shortest Path Forever, SkillUp Forever, Legacy Forever, Tweaks Forever"><span class="credit-name">Mouchoir</span><span class="credit-count">10<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Forever Core, Shortest Path Forever"><span class="credit-name">Alex21xx</span><span class="credit-count">7<span class="visually-hidden"> contributions</span></span></li>
-      <li title="Helped: Shortest Path Forever, SkillUp Forever, Legacy Forever"><span class="credit-name">cotijelucie</span><span class="credit-count">5<span class="visually-hidden"> contributions</span></span></li>
+      <li title="Helped: Shortest Path Forever, SkillUp Forever, Legacy Forever"><span class="credit-name">cotijelucie</span><span class="credit-count">6<span class="visually-hidden"> contributions</span></span></li>
+      <li title="Helped: SkillUp Forever"><span class="credit-name">kopuliak</span><span class="credit-count">5<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Maggew</span><span class="credit-count">5<span class="visually-hidden"> contributions</span></span></li>
-      <li title="Helped: SkillUp Forever"><span class="credit-name">kopuliak</span><span class="credit-count">4<span class="visually-hidden"> contributions</span></span></li>
+      <li title="Helped: SkillUp Forever"><span class="credit-name">bromidious</span><span class="credit-count">4<span class="visually-hidden"> contributions</span></span></li>
+      <li title="Helped: Adventure Guide Forever"><span class="credit-name">InfamousMunky</span><span class="credit-count">4<span class="visually-hidden"> contributions</span></span></li>
+      <li title="Helped: Forever Core, Adventure Guide Forever, SkillUp Forever"><span class="credit-name">iPulse</span><span class="credit-count">4<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">MacieGx</span><span class="credit-count">4<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Shortest Path Forever, Legacy Forever"><span class="credit-name">overspark</span><span class="credit-count">4<span class="visually-hidden"> contributions</span></span></li>
+      <li title="Helped: Forever Core, Shortest Path Forever, SkillUp Forever"><span class="credit-name">_spada</span><span class="credit-count">3<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Shortest Path Forever, SkillUp Forever, Legacy Forever"><span class="credit-name">Brainc3ll</span><span class="credit-count">3<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">Chuujitsuna</span><span class="credit-count">3<span class="visually-hidden"> contributions</span></span></li>
-      <li title="Helped: Forever Core, SkillUp Forever"><span class="credit-name">iPulse</span><span class="credit-count">3<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Shortest Path Forever, Adventure Guide Forever"><span class="credit-name">sampconrad</span><span class="credit-count">3<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Adventure Guide Forever"><span class="credit-name">starkovsky</span><span class="credit-count">3<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Stiandresius</span><span class="credit-count">3<span class="visually-hidden"> contributions</span></span></li>
-      <li title="Helped: Forever Core, Shortest Path Forever"><span class="credit-name">_spada</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
+      <li title="Helped: Shortest Path Forever, Adventure Guide Forever"><span class="credit-name">vladsnz</span><span class="credit-count">3<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Forever Core, SkillUp Forever"><span class="credit-name">berserkerlxl</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
+      <li title="Helped: Forever Core, Shortest Path Forever"><span class="credit-name">Bolton_wow</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">CtrlDKhayos</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Forever Core, Shortest Path Forever"><span class="credit-name">deathmvp1</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">GenericP</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
-      <li title="Helped: Adventure Guide Forever"><span class="credit-name">InfamousMunky</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Shortest Path Forever, Adventure Guide Forever"><span class="credit-name">jixxor</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Joster91</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
+      <li title="Helped: Field Guide Forever"><span class="credit-name">Kimab</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">kindguydev</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Legacy Forever"><span class="credit-name">Lûca</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
+      <li title="Helped: Shortest Path Forever, Adventure Guide Forever"><span class="credit-name">MrOxiMoron</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Forever Core, Adventure Guide Forever"><span class="credit-name">Naburiel</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">prokn4h</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Tweaks Forever"><span class="credit-name">Sojiro84</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">st3nlee</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
+      <li title="Helped: Shortest Path Forever, Field Guide Forever"><span class="credit-name">tgkGate</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">The___Fast</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">trias6657</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
-      <li title="Helped: Shortest Path Forever, Adventure Guide Forever"><span class="credit-name">vladsnz</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">user_sggieekz05hc7uxt</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
       <li title="Helped: Shortest Path Forever, Adventure Guide Forever"><span class="credit-name">wfournier</span><span class="credit-count">2<span class="visually-hidden"> contributions</span></span></li>
+      <li title="Helped: SkillUp Forever"><span class="credit-name">.phear</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">0xTrk</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">3kinex</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Acem</span></li>
@@ -767,62 +783,86 @@
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Aldericdevir</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">aryaxo</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">BallaRa</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">Bervath</span></li>
       <li title="Helped: Legacy Forever"><span class="credit-name">Bigabyte</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">Blast22</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">Bolthorr</span></li>
-      <li title="Helped: Shortest Path Forever"><span class="credit-name">Bolton_wow</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">borick7318</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">caghanpekin-prog</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">chris-chrysos</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">cidolfus27</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">cobalt_44</span></li>
       <li title="Helped: Adventure Guide Forever"><span class="credit-name">CodeHoax</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">CodexFD</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">CorvidofShadows13</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">CptShooter</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">cwebbx</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">DaFrozenMage</span></li>
       <li title="Helped: Legacy Forever"><span class="credit-name">DanielVafidis</span></li>
       <li title="Helped: Forever Core"><span class="credit-name">Darkwavez76</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">derzwiebelritter</span></li>
+      <li title="Helped: SkillUp Forever"><span class="credit-name">Diamondclaw</span></li>
       <li title="Helped: Forever Core"><span class="credit-name">dryzee</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">Ekallo</span></li>
       <li title="Helped: Adventure Guide Forever"><span class="credit-name">eliasbusato</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">esc_return</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Exo_NA</span></li>
       <li title="Helped: Forever Core"><span class="credit-name">Fareed</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Fel7</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Fitz</span></li>
+      <li title="Helped: SkillUp Forever"><span class="credit-name">FreakinNerd</span></li>
       <li title="Helped: Adventure Guide Forever"><span class="credit-name">fuguer-ai</span></li>
+      <li title="Helped: SkillUp Forever"><span class="credit-name">fusionley</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Gaafah</span></li>
       <li title="Helped: Adventure Guide Forever"><span class="credit-name">Gnatz_0815</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">hardliquor</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">HeartOfD2</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">hervad</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">hwalflor</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">icouldonlygetthisname</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">IronmanBG</span></li>
+      <li title="Helped: SkillUp Forever"><span class="credit-name">ItachiGrave</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">jackthereaper_</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">jakerist</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">jakerist (Grayburn)</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">jakeyjake07</span></li>
       <li title="Helped: Adventure Guide Forever"><span class="credit-name">jechten</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">joaocjesus</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">JohnChrin</span></li>
+      <li title="Helped: Macro Assist Forever"><span class="credit-name">Kal66</span></li>
       <li title="Helped: Legacy Forever"><span class="credit-name">KeijinDE</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">Kirdan</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">Kozoaku</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Kragmars</span></li>
       <li title="Helped: Adventure Guide Forever"><span class="credit-name">kragmars</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">kurila11478</span></li>
+      <li title="Helped: Adventure Guide Forever"><span class="credit-name">lanprite</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">leenagil-coder</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">legortiz</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">lkshrk</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">lokitako</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">lone_viking1921</span></li>
+      <li title="Helped: SkillUp Forever"><span class="credit-name">luna</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">Lůca [Luutsa]</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">macwire</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Merlinqt</span></li>
       <li title="Helped: Adventure Guide Forever"><span class="credit-name">methabolic</span></li>
+      <li title="Helped: SkillUp Forever"><span class="credit-name">mimmordino</span></li>
       <li title="Helped: Forever Core"><span class="credit-name">MrFIXlT</span></li>
+      <li title="Helped: Tweaks Forever"><span class="credit-name">NightIsolation</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Nightwind416</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">Nivlemoth_Nathrezim</span></li>
+      <li title="Helped: SkillUp Forever"><span class="credit-name">nookie909</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">o0saw0o</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Osipanda</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Oxds</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">phear</span></li>
       <li title="Helped: Forever Core"><span class="credit-name">procque</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Quantity-4</span></li>
+      <li title="Helped: Field Guide Forever"><span class="credit-name">QuincyO</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">qwertzyxc</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Ragnarok11B</span></li>
+      <li title="Helped: SkillUp Forever"><span class="credit-name">Rambomst</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">Rawveggie</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">Rekalicious</span></li>
       <li title="Helped: Adventure Guide Forever"><span class="credit-name">rhednak</span></li>
@@ -831,13 +871,16 @@
       <li title="Helped: SkillUp Forever"><span class="credit-name">rockhumper84</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">rydoc</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">saikoso</span></li>
+      <li title="Helped: SkillUp Forever"><span class="credit-name">SanyaBane</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">scraak</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">sdtom</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">sean16981</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">Setuaro</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">SilentGentlemanSG</span></li>
       <li title="Helped: Tweaks Forever"><span class="credit-name">SirGooie</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">Sogu</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Sol_Deus</span></li>
+      <li title="Helped: SkillUp Forever"><span class="credit-name">soviman1</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Speaker1264</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">spidersylar</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">sundered1985</span></li>
@@ -848,20 +891,29 @@
       <li title="Helped: SkillUp Forever"><span class="credit-name">TechnoHunter</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">TeeRKee</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Testvonfarkle</span></li>
-      <li title="Helped: Shortest Path Forever"><span class="credit-name">tgkGate</span></li>
       <li title="Helped: Legacy Forever"><span class="credit-name">TheCheat54</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">ThePNAG</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">time2w8</span></li>
       <li title="Helped: Forever Core"><span class="credit-name">Torpdotorgx</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">TRDeadbeat</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">ubrider</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">user_10oietw0rdrgk4le</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">user_efwsfml273dlvfm5</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">user_zbqhuuoypkkr46x1</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">vcatalin</span></li>
       <li title="Helped: Adventure Guide Forever"><span class="credit-name">VinzNL</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">Viper2042</span></li>
+      <li title="Helped: SkillUp Forever"><span class="credit-name">vladdoubrov</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">Weythx</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">wheelbarrel00</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">Xeteskian</span></li>
+      <li title="Helped: SkillUp Forever"><span class="credit-name">Yivry</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">z1ck</span></li>
       <li title="Helped: Shortest Path Forever"><span class="credit-name">Zavian</span></li>
       <li title="Helped: SkillUp Forever"><span class="credit-name">zazomazzo</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">Zhiroc</span></li>
       <li title="Helped: Forever Core"><span class="credit-name">ZiiMs</span></li>
+      <li title="Helped: Shortest Path Forever"><span class="credit-name">Zwaffelmagic</span></li>
     </ul>
     <!-- credits:end -->
   </div>
