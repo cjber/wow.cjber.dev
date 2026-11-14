@@ -35,3 +35,40 @@ jobs:
         run: scripts/sync-screenshots.sh --check
       - name: Check the Made with players section matches each addon's THIRD_PARTY.md
         run: python3 scripts/sync-credits.py --check
+
+  # A scheduled check that fails quietly lets the site fall behind the addons: keep one open issue
+  # naming the stale assets, and close that issue on the next scheduled run that passes. The title is
+  # deliberately distinct from #14, so a passing run never closes the issue that tracked this repair.
+  report:
+    needs: check
+    if: always() && github.event_name == 'schedule'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      issues: write
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          TITLE: Scheduled screenshot check failed
+          FAILED: ${{ needs.check.result != 'success' }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          issue=$(gh api --paginate "repos/$GITHUB_REPOSITORY/issues?state=open&per_page=100" \
+            --jq ".[] | select(.title == \"$TITLE\") | .number")
+          issue=${issue%%$'\n'*}
+          if [ "$FAILED" = true ]; then
+            body="A site image or the Made with players section no longer matches the addons' current renders: $RUN_URL
+
+          Read the failing check in that run. From a fresh worktree run \`scripts/sync-screenshots.sh\` and \`python3 scripts/sync-credits.py\` against the addons' current \`main\`, review the changed images, and ship them together. The sources are generated renders, not in-game captures. The next scheduled run that passes closes this issue."
+            if [ -n "$issue" ]; then
+              gh api -X POST "repos/$GITHUB_REPOSITORY/issues/$issue/comments" -f body="Failed again: $RUN_URL" >/dev/null
+            else
+              gh api -X POST "repos/$GITHUB_REPOSITORY/issues" \
+                -f title="$TITLE" -f body="$body" -f "assignees[]=$GITHUB_REPOSITORY_OWNER" >/dev/null
+            fi
+          elif [ -n "$issue" ]; then
+            gh api -X POST "repos/$GITHUB_REPOSITORY/issues/$issue/comments" \
+              -f body="The screenshots and credits match again: $RUN_URL" >/dev/null
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/$issue" \
+              -f state=closed -f state_reason=completed >/dev/null
+          fi
