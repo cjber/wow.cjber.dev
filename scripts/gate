@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# The fast local gate: syntax of every Pages Function, script and shell file. CI's workflow and secret
+# scans run on the pull request. `scripts/gate --changed` checks only files changed against origin/main.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+if [ "${1:-}" = "--changed" ]; then
+  committed="$(git diff --name-only --diff-filter=d origin/main)"
+  untracked="$(git ls-files --others --exclude-standard)"
+  files="$(printf '%s\n%s\n' "$committed" "$untracked" | sort -u)"
+else
+  files="$(git ls-files)"
+fi
+
+status=0
+while IFS= read -r f; do
+  case "$f" in
+    functions/*.js | lib/*.js) node --input-type=module --check < "$f" || status=1 ;;
+    scripts/*.py) python3 -c "import ast,sys; ast.parse(open(sys.argv[1]).read())" "$f" || status=1 ;;
+    scripts/*.sh | scripts/gate) bash -n "$f" || status=1 ;;
+  esac
+done <<< "$files"
+exit "$status"
