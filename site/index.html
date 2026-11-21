@@ -284,6 +284,12 @@
     text-transform: uppercase;
   }
 
+  .btn-github {
+    border-color: var(--gold);
+    background: var(--gold-wash);
+    color: var(--gold-bright);
+  }
+
   .downloads {
     color: var(--faint);
     font-size: 0.9rem;
@@ -324,6 +330,13 @@
     margin: 0;
   }
 
+  .shot-link {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    cursor: zoom-in;
+  }
+
   .shots img {
     display: block;
     width: auto;
@@ -343,11 +356,6 @@
     line-height: 1.5;
   }
 
-  @media (max-width: 959px) {
-    .shots {
-      max-width: 680px;
-    }
-  }
 
   /* Made with players */
   .credits {
@@ -435,9 +443,8 @@
 
   @media (min-width: 960px) {
     .addon {
-      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-      gap: 48px;
-      align-items: start;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 32px;
     }
 
     .addon-head {
@@ -447,16 +454,6 @@
     .icon {
       width: 76px;
       height: 76px;
-    }
-  }
-
-  @media (min-width: 1100px) {
-    .shots {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .shots figure:only-child {
-      grid-column: span 2;
     }
   }
 
@@ -516,16 +513,17 @@
         <span class="install-label">Install from</span>
         <a class="btn" href="https://www.curseforge.com/wow/addons/adventure-guide-forever">CurseForge</a>
         <a class="btn" href="https://addons.wago.io/addons/adventure-guide-forever">Wago Addons</a>
+        <a class="btn btn-github" href="https://github.com/cjber/adventure-guide-forever">&#9733; Star on GitHub</a>
         <span class="downloads"><strong data-downloads="adventure-guide-forever">64K</strong> downloads on CurseForge</span>
       </p>
     </div>
     <div class="shots">
       <figure>
-        <img src="img/adventure-guide-forever/map.webp" width="912" height="720" alt="A journey's quest stops numbered on The Barrens map, with a route to the first" loading="lazy">
+        <a class="shot-link" href="img/adventure-guide-forever/map.webp"><img src="img/adventure-guide-forever/map.webp" width="912" height="720" alt="A journey's quest stops numbered on The Barrens map, with a route to the first" loading="lazy"></a>
         <figcaption>Each number is a stop on the route: a pickup, an objective or a hand-in.</figcaption>
       </figure>
       <figure>
-        <img src="img/adventure-guide-forever/tracker.webp" width="389" height="396" alt="The Adventure Guide tracker section" loading="lazy">
+        <a class="shot-link" href="img/adventure-guide-forever/tracker.webp"><img src="img/adventure-guide-forever/tracker.webp" width="389" height="396" alt="The Adventure Guide tracker section" loading="lazy"></a>
         <figcaption>Your next stop sits beside your quests, with travel time when Shortest Path Forever has an estimate.</figcaption>
       </figure>
     </div>
@@ -545,16 +543,17 @@
         <span class="install-label">Install from</span>
         <a class="btn" href="https://www.curseforge.com/wow/addons/shortest-path-forever">CurseForge</a>
         <a class="btn" href="https://addons.wago.io/addons/shortest-path-forever">Wago Addons</a>
+        <a class="btn btn-github" href="https://github.com/cjber/shortest-path-forever">&#9733; Star on GitHub</a>
         <span class="downloads"><strong data-downloads="shortest-path-forever">1.3M</strong> downloads on CurseForge</span>
       </p>
     </div>
     <div class="shots">
       <figure>
-        <img src="img/shortest-path-forever/tracker.webp" width="648" height="396" alt="Journey steps from Auberdine to Silithus" loading="lazy">
+        <a class="shot-link" href="img/shortest-path-forever/tracker.webp"><img src="img/shortest-path-forever/tracker.webp" width="648" height="396" alt="Journey steps from Auberdine to Silithus" loading="lazy"></a>
         <figcaption>The tracker shows each step, with time and distance remaining.</figcaption>
       </figure>
       <figure>
-        <img src="img/shortest-path-forever/minimap.webp" width="526" height="592" alt="A route and the game's waypoint on the minimap" loading="lazy">
+        <a class="shot-link" href="img/shortest-path-forever/minimap.webp"><img src="img/shortest-path-forever/minimap.webp" width="526" height="592" alt="A route and the game's waypoint on the minimap" loading="lazy"></a>
         <figcaption>Breadcrumbs show the walking route. The waypoint leads to the next step.</figcaption>
       </figure>
     </div>
@@ -574,16 +573,17 @@
         <span class="install-label">Install from</span>
         <a class="btn" href="https://www.curseforge.com/wow/addons/skillup-forever">CurseForge</a>
         <a class="btn" href="https://addons.wago.io/addons/skillup-forever">Wago Addons</a>
+        <a class="btn btn-github" href="https://github.com/cjber/skillup-forever">&#9733; Star on GitHub</a>
         <span class="downloads"><strong data-downloads="skillup-forever">1.7M</strong> downloads on CurseForge</span>
       </p>
     </div>
     <div class="shots">
       <figure>
-        <img src="img/skillup-forever/window.webp" width="1200" height="712" alt="The Leatherworking window with skill-up chance and cost on each recipe row, and a tooltip showing reagent prices" loading="lazy">
+        <a class="shot-link" href="img/skillup-forever/window.webp"><img src="img/skillup-forever/window.webp" width="1200" height="712" alt="The Leatherworking window with skill-up chance and cost on each recipe row, and a tooltip showing reagent prices" loading="lazy"></a>
         <figcaption>Each row shows its chance and cost. The tooltip beside the window prices each reagent.</figcaption>
       </figure>
       <figure>
-        <img src="img/skillup-forever/route.webp" width="1200" height="1058" alt="The SkillUp route tab with training and crafting steps and the reagents they need" loading="lazy">
+        <a class="shot-link" href="img/skillup-forever/route.webp"><img src="img/skillup-forever/route.webp" width="1200" height="1058" alt="The SkillUp route tab with training and crafting steps and the reagents they need" loading="lazy"></a>
         <figcaption>The route tab lists training and crafting steps with their costs and the reagents they need.</figcaption>
       </figure>
     </div>
@@ -603,16 +603,17 @@
         <span class="install-label">Install from</span>
         <a class="btn" href="https://www.curseforge.com/wow/addons/tweaks-forever">CurseForge</a>
         <a class="btn" href="https://addons.wago.io/addons/tweaks-forever">Wago Addons</a>
+        <a class="btn btn-github" href="https://github.com/cjber/tweaks-forever">&#9733; Star on GitHub</a>
         <span class="downloads"><strong data-downloads="tweaks-forever">17K</strong> downloads on CurseForge</span>
       </p>
     </div>
     <div class="shots">
       <figure>
-        <img src="img/tweaks-forever/dungeonmap.webp" width="1200" height="949" alt="The world map inside Blackfathom Deeps, showing the painted dungeon floor" loading="lazy">
+        <a class="shot-link" href="img/tweaks-forever/dungeonmap.webp"><img src="img/tweaks-forever/dungeonmap.webp" width="1200" height="949" alt="The world map inside Blackfathom Deeps, showing the painted dungeon floor" loading="lazy"></a>
         <figcaption>Inside a dungeon or raid, the map opens on its painted sheet.</figcaption>
       </figure>
       <figure>
-        <img src="img/tweaks-forever/nameplates.webp" width="1200" height="389" alt="Three enemy nameplates, the target outlined with a Fireball cast" loading="lazy">
+        <a class="shot-link" href="img/tweaks-forever/nameplates.webp"><img src="img/tweaks-forever/nameplates.webp" width="1200" height="389" alt="Three enemy nameplates, the target outlined with a Fireball cast" loading="lazy"></a>
         <figcaption>Nameplates in retail's own frame, with your target outlined and a quest icon on what you still need.</figcaption>
       </figure>
     </div>
@@ -632,16 +633,17 @@
         <span class="install-label">Install from</span>
         <a class="btn" href="https://www.curseforge.com/wow/addons/legacy-forever">CurseForge</a>
         <a class="btn" href="https://addons.wago.io/addons/legacy-forever">Wago Addons</a>
+        <a class="btn btn-github" href="https://github.com/cjber/legacy-forever">&#9733; Star on GitHub</a>
         <span class="downloads"><strong data-downloads="legacy-forever">50K</strong> downloads on CurseForge</span>
       </p>
     </div>
     <div class="shots">
       <figure>
-        <img src="img/legacy-forever/map.webp" width="1200" height="934" alt="Ashenvale on the world map with undiscovered areas shaded, the zone completion corner and the Legacy menu open" loading="lazy">
+        <a class="shot-link" href="img/legacy-forever/map.webp"><img src="img/legacy-forever/map.webp" width="1200" height="934" alt="Ashenvale on the world map with undiscovered areas shaded, the zone completion corner and the Legacy menu open" loading="lazy"></a>
         <figcaption>Half of Ashenvale explored: the shield's number is what is left on this map, and its menu lists it by challenge.</figcaption>
       </figure>
       <figure>
-        <img src="img/legacy-forever/tracker.webp" width="664" height="856" alt="The objective tracker with the game's All Objectives header and the tracked Legacy challenges" loading="lazy">
+        <a class="shot-link" href="img/legacy-forever/tracker.webp"><img src="img/legacy-forever/tracker.webp" width="664" height="856" alt="The objective tracker with the game's All Objectives header and the tracked Legacy challenges" loading="lazy"></a>
         <figcaption>Challenges you track sit in the objective tracker under the game's own header, with live progress.</figcaption>
       </figure>
     </div>
@@ -661,12 +663,13 @@
         <span class="install-label">Install from</span>
         <a class="btn" href="https://www.curseforge.com/wow/addons/commissions-forever">CurseForge</a>
         <a class="btn" href="https://addons.wago.io/addons/commissions-forever">Wago Addons</a>
+        <a class="btn btn-github" href="https://github.com/cjber/commissions-forever">&#9733; Star on GitHub</a>
         <span class="downloads"><strong data-downloads="commissions-forever">722</strong> downloads on CurseForge</span>
       </p>
     </div>
     <div class="shots">
       <figure>
-        <img src="img/commissions-forever/window.webp" width="1200" height="1010" alt="Commissions Forever lists turn-in materials and bag counts" loading="lazy">
+        <a class="shot-link" href="img/commissions-forever/window.webp"><img src="img/commissions-forever/window.webp" width="1200" height="1010" alt="Commissions Forever lists turn-in materials and bag counts" loading="lazy"></a>
         <figcaption>The list groups your held materials and offers a route to active commission turn-ins.</figcaption>
       </figure>
     </div>
@@ -686,16 +689,17 @@
         <span class="install-label">Install from</span>
         <a class="btn" href="https://www.curseforge.com/wow/addons/macro-assist-forever">CurseForge</a>
         <a class="btn" href="https://addons.wago.io/addons/macro-assist-forever">Wago Addons</a>
+        <a class="btn btn-github" href="https://github.com/cjber/macro-assist-forever">&#9733; Star on GitHub</a>
         <span class="downloads"><strong data-downloads="macro-assist-forever">1.5K</strong> downloads on CurseForge</span>
       </p>
     </div>
     <div class="shots">
       <figure>
-        <img src="img/macro-assist-forever/window.webp" width="1200" height="699" alt="The macro list beside the mono editor" loading="lazy">
+        <a class="shot-link" href="img/macro-assist-forever/window.webp"><img src="img/macro-assist-forever/window.webp" width="1200" height="699" alt="The macro list beside the mono editor" loading="lazy"></a>
         <figcaption>The searchable list on the left, the selected macro in the editor, and what it does below the code.</figcaption>
       </figure>
       <figure>
-        <img src="img/macro-assist-forever/completion.webp" width="1200" height="699" alt="Conditions offered with live values beside a problem in the macro" loading="lazy">
+        <a class="shot-link" href="img/macro-assist-forever/completion.webp"><img src="img/macro-assist-forever/completion.webp" width="1200" height="699" alt="Conditions offered with live values beside a problem in the macro" loading="lazy"></a>
         <figcaption>Completions show each condition's value right now, and problems come with a fix.</figcaption>
       </figure>
     </div>
@@ -715,16 +719,17 @@
         <span class="install-label">Install from</span>
         <a class="btn" href="https://www.curseforge.com/wow/addons/field-guide-forever">CurseForge</a>
         <a class="btn" href="https://addons.wago.io/addons/field-guide-forever">Wago Addons</a>
+        <a class="btn btn-github" href="https://github.com/cjber/field-guide-forever">&#9733; Star on GitHub</a>
         <span class="downloads"><strong data-downloads="field-guide-forever">1.5K</strong> downloads on CurseForge</span>
       </p>
     </div>
     <div class="shots">
       <figure>
-        <img src="img/field-guide-forever/field-guide.webp" width="1200" height="856" alt="The creatures journal" loading="lazy">
+        <a class="shot-link" href="img/field-guide-forever/field-guide.webp"><img src="img/field-guide-forever/field-guide.webp" width="1200" height="856" alt="The creatures journal" loading="lazy"></a>
         <figcaption>The journal catalogues creatures by zone, with their levels, families and ranks.</figcaption>
       </figure>
       <figure>
-        <img src="img/field-guide-forever/shiny-record.webp" width="1200" height="856" alt="A species with its variants and records" loading="lazy">
+        <a class="shot-link" href="img/field-guide-forever/shiny-record.webp"><img src="img/field-guide-forever/shiny-record.webp" width="1200" height="856" alt="A species with its variants and records" loading="lazy"></a>
         <figcaption>Each species can turn up as a bronze, silver, gold or shiny variant, and keeps its own records.</figcaption>
       </figure>
     </div>
@@ -927,7 +932,7 @@
 
 <footer class="footer">
   <div class="wrap">
-    <p>Made by Cillian Berragan. <a href="https://github.com/cjber/wow.cjber.dev">GitHub</a>, <a href="https://cjber.dev">cjber.dev</a>.</p>
+    <p>Made by Cillian Berragan. <a href="https://github.com/cjber/wow.cjber.dev">GitHub</a>, <a href="https://github.com/cjber/forever-core">ForeverCore on GitHub</a>, <a href="https://cjber.dev">cjber.dev</a>.</p>
     <p>World of Warcraft is a trademark of Blizzard Entertainment, Inc. This site is not affiliated with or endorsed by Blizzard Entertainment.</p>
   </div>
 </footer>
